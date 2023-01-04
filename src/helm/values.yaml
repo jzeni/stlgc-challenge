@@ -1,0 +1,12 @@
+replicaCount: 2
+
+image:
+  tag: dd23f2cdea9861c00c2088213dd244afeb18464d
+
+resources:
+  requests:
+    memory: 56Mi
+    cpu: 50m
+  limits:
+    memory: 128Mi
+    cpu: 100m

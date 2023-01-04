@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: microservice
+  template:
+    metadata:
+      labels:
+        app: microservice
+    spec:
+      containers:
+      - name: microservice
+        image: jzeni/stlgc-challenge:{{ .Values.image.tag }}
+        imagePullPolicy: IfNotPresent
+        envFrom:
+          - configMapRef:
+              name: microservice-config
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
