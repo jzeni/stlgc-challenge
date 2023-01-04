@@ -46,11 +46,11 @@ services:
   microservice:
     build:
       context: src
-      dockerfile: Dockerfile.local
     depends_on:
       - init_topic
       - kafka
     entrypoint: ["/bin/bash", "/home/microservice/local-entrypoint.sh"]
+    command: ["python", "-u", "/home/microservice/main.py"]
     environment:
       - BROKER_ADDRESS=kafka:9092
       - CONSUMER_GROUP_ID=consumers-01
