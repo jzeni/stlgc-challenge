@@ -23,4 +23,4 @@ class PingPong:
     except:
       response_message = json.dumps({ "message": "Error in the format of the Kafka event" })
       return [PingPong.FAILURE_TOPIC, response_message ]
-k
+
