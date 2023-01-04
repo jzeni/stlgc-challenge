@@ -8,6 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-ENTRYPOINT ["/bin/bash", "/home/microservice/local-entrypoint.sh"]
-
 CMD ["python", "-u", "/home/microservice/main.py"]

@@ -45,17 +45,16 @@ services:
 
   microservice:
     build:
-      context: microservice
+      context: src
       dockerfile: Dockerfile.local
     depends_on:
       - init_topic
       - kafka
-    ports:
-      - 5001:5000
+    entrypoint: ["/bin/bash", "/home/microservice/local-entrypoint.sh"]
     environment:
       - BROKER_ADDRESS=kafka:9092
       - CONSUMER_GROUP_ID=consumers-01
       - CONSUMER_BEHAVIOUR=earliest
       - TOPIC=dev.pingpong.requested
     volumes:
-      - $PWD/microservice:/home/microservice
+      - $PWD/src:/home/microservice
