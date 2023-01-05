@@ -5,9 +5,9 @@ from confluent_kafka import Consumer, Producer
 from pingpong import PingPong
 
 
-BROKER_ADDRESS = os.environ["BROKER_ADDRESS"]
-CONSUMER_GROUP_ID = os.environ["CONSUMER_GROUP_ID"]
-CONSUMER_BEHAVIOUR = os.environ["CONSUMER_BEHAVIOUR"]
+BROKER_ADDRESS = os.environ['BROKER_ADDRESS']
+CONSUMER_GROUP_ID = os.environ['CONSUMER_GROUP_ID']
+CONSUMER_BEHAVIOUR = os.environ['CONSUMER_BEHAVIOUR']
 TOPIC = os.environ['TOPIC']
 
 logging.basicConfig(level=logging.DEBUG)
@@ -32,7 +32,7 @@ while True:
     continue
 
   if msg.error():
-    logging.error("Consumer error: {}".format(msg.error()))
+    logging.error('Consumer error: {}'.format(msg.error()))
     continue
 
   logging.debug('Received message: {}'.format(msg.value()))

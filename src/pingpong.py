@@ -15,12 +15,11 @@ class PingPong:
       message = payload['message']
 
       if message == 'ping':
-        response_message = json.dumps({ "transaction-id": transaction_id, "payload": { "message": "pong" } })
+        response_message = json.dumps({ 'transaction-id': transaction_id, 'payload': { 'message': 'pong' } })
         return [PingPong.SUCCESS_TOPIC, response_message]
       else:
-        response_message = json.dumps({ "transaction-id": transaction_id, "payload": { "message": "Error the message doesn't contain 'ping'" } })
+        response_message = json.dumps({ 'transaction-id': transaction_id, 'payload': { 'message': "Error the message doesn't contain 'ping'" } })
         return [PingPong.FAILURE_TOPIC, response_message]
     except:
-      response_message = json.dumps({ "message": "Error in the format of the Kafka event" })
+      response_message = json.dumps({ 'message': 'Error in the format of the Kafka event' })
       return [PingPong.FAILURE_TOPIC, response_message ]
-
