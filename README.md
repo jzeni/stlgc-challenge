@@ -19,6 +19,18 @@ To send events to be processed by the microservice, you can use the CLI from the
 1) `docker-compose exec  kafka bash`
 2)  `/bin/kafka-console-producer --topic dev.pingpong.requested --bootstrap-server localhost:9092`
 
+Example log:
+```
+$ docker-compose logs -f microservice
+
+Attaching to satellogic-challenge_microservice_1
+microservice_1  | wait-for-it.sh: waiting 60 seconds for kafka:9092
+microservice_1  | wait-for-it.sh: kafka:9092 is available after 9 seconds
+
+microservice_1  | DEBUG:root:Received message: b'invalid-message'
+microservice_1  | DEBUG:root:Response: {"message": "Error in the format of the Kafka event"}, Topic: dev.pingpong.failed
+```
+
 ### Instructions for deployment
 Use the script `bin/deploy-chart.sh` to deploy the Helm chart into a K8s cluster. This script creates the namespace (if not exist), installs the chart (if not installed) and deploy the service.
 
