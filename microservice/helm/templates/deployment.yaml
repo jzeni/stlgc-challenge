@@ -12,6 +12,10 @@ spec:
       labels:
         app: microservice
     spec:
+      hostAliases:
+        - ip: {{ .Values.kafkaAddress }}
+          hostnames:
+          - kafka-broker
       containers:
       - name: microservice
         image: jzeni/stlgc-challenge:{{ .Values.image.tag }}

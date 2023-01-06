@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - test
 
 jobs:
   build-and-push:
@@ -23,6 +24,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: src
+          context: microservice
           push: true
           tags: jzeni/stlgc-challenge:${{ github.sha }}

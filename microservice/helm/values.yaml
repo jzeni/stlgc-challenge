@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  tag: dd23f2cdea9861c00c2088213dd244afeb18464d
+  tag: e0aa8a4693b8a56e6ee91c1a3c31f37d7fc5dfbd
 
 resources:
   requests:

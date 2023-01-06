@@ -46,7 +46,7 @@ services:
 
   microservice:
     build:
-      context: src
+      context: microservice
     depends_on:
       - init_topic
       - kafka
@@ -58,4 +58,4 @@ services:
       - CONSUMER_BEHAVIOUR=earliest
       - TOPIC=dev.pingpong.requested
     volumes:
-      - $PWD/src:/home/microservice
+      - $PWD/microservice:/home/microservice

@@ -31,10 +31,27 @@ microservice_1  | DEBUG:root:Received message: b'invalid-message'
 microservice_1  | DEBUG:root:Response: {"message": "Error in the format of the Kafka event"}, Topic: dev.pingpong.failed
 ```
 
-### Instructions for deployment
-Use the script `bin/deploy-chart.sh` to deploy the Helm chart into a K8s cluster. This script creates the namespace (if not exist), installs the chart (if not installed) and deploy the service.
+### Instructions for deployment to Kubernetes
 
-Note: This chart only includes the python service and does not include the required Kafka services.
+1) Deploy the Kafka broker and Zookeper using the Helm chart
+
+```
+./bin/deploy-kafka.sh
+```
+
+2) Create topics
+```
+./bin/create-topics.sh
+```
+4) Obtain the Kafka service IP
+```
+kubectl -n kafka get service kafka-service
+```
+
+5) Deploy the microservice
+```
+./bin/deploy-microservice -k [KAFKA SERVICE IP]
+```
 
 ## Cloud architecture review
 The following is a proposal for a cloud-native architecture based in the AWS platform. All the resources can be created used Terraform as IaC tool.

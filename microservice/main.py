@@ -25,6 +25,8 @@ p = Producer({
 
 c.subscribe([TOPIC])
 
+logging.debug('Suscribed to topic: {}'.format(TOPIC))
+
 while True:
   msg = c.poll(1.0)
 

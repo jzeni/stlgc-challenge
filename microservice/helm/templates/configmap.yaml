@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: microservice-config
 data:
-  BROKER_ADDRESS: host.minikube.internal:9092
+  BROKER_ADDRESS: kafka-service.kafka:9092
   CONSUMER_GROUP_ID: consumers-01
   CONSUMER_BEHAVIOUR: earliest
   TOPIC: dev.pingpong.requested
