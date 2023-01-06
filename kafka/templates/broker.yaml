@@ -19,7 +19,7 @@ metadata:
   name: kafka-broker
   namespace: kafka
 spec:
-  replicas: 1
+  replicas: {{ .Values.kafka.replicas }}
   selector:
     matchLabels:
       app: kafka-broker
@@ -39,7 +39,7 @@ spec:
           value: PLAINTEXT://:9092
         - name: KAFKA_ADVERTISED_LISTENERS
           value: PLAINTEXT://kafka-broker:9092
-        image: wurstmeister/kafka
+        image: wurstmeister/kafka:{{ .Values.kafka.image.tag }}
         imagePullPolicy: IfNotPresent
         name: kafka-broker
         ports:

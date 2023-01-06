@@ -23,17 +23,17 @@ metadata:
   name: zookeeper
   namespace: kafka
 spec:
-  replicas: 1
+  replicas: {{ .Values.zookeeper.replicas }}
   selector:
     matchLabels:
       app: zookeeper
   template:
-    metadata: 
+    metadata:
       labels:
         app: zookeeper
     spec:
       containers:
-        - image: wurstmeister/zookeeper
+        - image: wurstmeister/zookeeper:{{ .Values.zookeeper.image.tag }}
           imagePullPolicy: IfNotPresent
           name: zookeeper
           ports:
