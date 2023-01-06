@@ -6,7 +6,8 @@ This repository includes:
 - The python microservice code,
 - docker-compose orchestration to setup services locally for development purposes (microservice, kafka, zookeper),
 - a Github Actions pipeline to build the docker image automatically,
-- a Helm chart to deploy the microservice and kafka services in a K8s cluster (tested in minikube)
+- helm charts to deploy the microservice and kafka services in a K8s cluster (tested in minikube)
+- one-click deployment of services and default settings configuredg
 
 This is a minimal implementation designed to satisfy the basic requirements and to be validated quickly and without much effort.
 
