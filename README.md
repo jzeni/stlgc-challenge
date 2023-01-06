@@ -7,9 +7,11 @@ This repository includes:
 - docker-compose orchestration to setup services locally for development purposes (microservice, kafka, zookeper),
 - a Github Actions pipeline to build the docker image automatically,
 - helm charts to deploy the microservice and kafka services in a K8s cluster (tested in minikube)
-- one-click deployment of services and default settings configuredg
+- one-click deployment scripts with default settings.
 
-This is a minimal implementation designed to satisfy the basic requirements and to be validated quickly and without much effort.
+Please note that this is a minimal implementation designed to satisfy the basic requirements and to be validated quickly and without much effort. This is not production-ready.
+
+Everything is configured to be deployed with the given scripts without other actions required.
 
 ### Instructions for local setup
 To run services locally with docker and docker-compose, use the following command
