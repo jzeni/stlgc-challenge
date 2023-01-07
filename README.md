@@ -64,7 +64,7 @@ The following is a proposal for a cloud-native architecture based in the AWS pla
 
 ![aws diagram](https://github.com/jzeni/stlgc-challenge/blob/master/doc/images/aws-diagram.png?raw=true)
 
-High-availability considerations:
+## High-availability considerations:
 
 In case the Kafka cluster is hosted in a Kubernetes cluster, it's good to spread brokers among failure-domains such as regions, zones, nodes, etc.
 
@@ -76,7 +76,7 @@ In order to tolerate planned and unplanned failure, the following aspects should
 
 For the real time metrics collections use case, it could be preferred availability over consistency (trade-off).
 
-Redarding the producer-consumer microservice, similar recommendations are made. Faul-tolerance can be provided by redudancy and replication across nodes and AZs.
+Redarding the producer-consumer microservice, similar recommendations are made. Fault-tolerance can be provided by redudancy and replication across nodes and AZs.
 
 ## Monitoring
 
