@@ -14,7 +14,7 @@ Everything is configured to be deployed with the given scripts without additiona
 The author of this implementation chose simplicity over non-function requirements, such as security, performance, etc, therefore this is not thought to be a production-ready solution. Availability and performance recommendations are included in the next section of this Readme.
 
 
-### Instructions for local setup
+## Instructions for local setup
 To run services locally with docker and docker-compose, use the following command
 ```
 docker-compose up
@@ -35,7 +35,7 @@ microservice_1  | DEBUG:root:Received message: b'invalid-message'
 microservice_1  | DEBUG:root:Response: {"message": "Error in the format of the Kafka event"}, Topic: dev.pingpong.failed
 ```
 
-### Instructions for deployment to Kubernetes
+## Instructions for deployment to Kubernetes
 
 The following instructions deploys the microservice and the kafka and Zookper services.
 
@@ -127,3 +127,10 @@ Four Golder Signals: Traffic / Latency /  Errors / Saturation
 ### Zookeeper metrics
 - `Number of alive connections`: ZooKeeper reports the number of clients connected to it via the num_alive_connections metric. This represents all connections, including connections to non-ZooKeeper nodes.
 - `Average latency`: The average request latency is the average time it takes (in milliseconds) for ZooKeeper to respond to a request. ZooKeeper will not respond to a request until it has written the transaction to its transaction log.
+
+## TODO
+- Change Kafka deployment to use StatefulSets and use a storage persistance method
+- Use optimized Dockerfile version for production and remote environments
+- Use cache in the GH actions pipeline
+- Use poetry for app dependency management
+- Package helm charts
