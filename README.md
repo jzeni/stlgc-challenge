@@ -9,9 +9,10 @@ This repository includes:
 - helm charts to deploy the microservice and kafka services in a K8s cluster (tested in minikube)
 - one-click deployment scripts with default settings.
 
-Please note that this is a minimal implementation designed to satisfy the basic requirements and to be validated quickly and without much effort. This is not production-ready.
+Everything is configured to be deployed with the given scripts without additional actions required.
 
-Everything is configured to be deployed with the given scripts without other actions required.
+The author of this implementation chose simplicity over non-function requirements, such as security, performance, etc, therefore this is not thought to be a production-ready solution. Availability and performance recommendations are included in the next section of this Readme.
+
 
 ### Instructions for local setup
 To run services locally with docker and docker-compose, use the following command
@@ -65,13 +66,17 @@ The following is a proposal for a cloud-native architecture based in the AWS pla
 
 High-availability considerations:
 
- - Networking:
-	 - Kubernetes (EKS) cluster should be deployed to multiple AZs.
-	 - Nodes should run in private subnets.
-	 - In case external connectivity is required a NAT gateway and/or and Internet Gateway should .be used
- - Redundancy:
-	 - Replication at pod and node levels is required for fault-tolerance.
-	 - Cluster autoscaler and Horizontal Pod Autoscaler (HPA) can be used for auto-scaling.
+In case the Kafka cluster is hosted in a Kubernetes cluster, it's good to spread brokers among failure-domains such as regions, zones, nodes, etc.
+
+In order to tolerate planned and unplanned failure, the following aspects should be considered:
+- A minimum in-sync replicas of 2
+- A replication factor of 3 for topics
+- At least 3 Kafka brokers, each running on different nodes. The number of brokers should be greater than the minimum in-sync replica size.
+- Nodes spread across three availability zones
+
+For the real time metrics collections use case, it could be preferred availability over consistency (trade-off).
+
+Redarding the producer-consumer microservice, similar recommendations are made. Faul-tolerance can be provided by redudancy and replication across nodes and AZs.
 
 ## Monitoring
 
